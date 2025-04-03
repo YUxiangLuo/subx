@@ -68,21 +68,21 @@ export const sing_box_config: any = {
       {
         process_path: ["/usr/bin/qbittorrent"],
         ip_is_private: true,
-        rule_set: ["geoip-cn", "china-site"],
+        rule_set: ["china-ip", "china-site"],
         action: "route",
         outbound: "direct",
       },
     ],
     rule_set: [
       {
-        type: "local",
+        type: "remote",
         tag: "china-site",
         format: "binary",
-        path: "/home/alice/pros/subx/rule/direct.srs"
+        url: "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/China/China.srs"
       },
       {
         type: "remote",
-        tag: "geoip-cn",
+        tag: "china-ip",
         format: "binary",
         url: "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/ChinaIPs/ChinaIPs.srs",
       },
