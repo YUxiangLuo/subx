@@ -1,0 +1,1612 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "strategy": "ipv4_only",
+    "disable_cache": false,
+    "cache_capacity": 10000,
+    "final": "googledns",
+    "servers": [
+      {
+        "type": "udp",
+        "tag": "googledns",
+        "server": "8.8.8.8",
+        "detour": "auto"
+      },
+      {
+        "type": "udp",
+        "tag": "alidns",
+        "server": "223.5.5.5",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": [
+          "china-site"
+        ],
+        "action": "route",
+        "server": "alidns"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "tun0",
+      "address": [
+        "172.18.0.1/30"
+      ],
+      "mtu": 9000,
+      "auto_route": true,
+      "auto_redirect": true,
+      "strict_route": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "Traffic:25.04GB|300GB",
+        "TrafficReset:28Day",
+        "Expire:2025-05-01",
+        "🇭🇰HongKongMetro01",
+        "🇭🇰HongKongMetro02",
+        "🇭🇰HongKongMetro03",
+        "🇭🇰HongKongMetro04",
+        "🇭🇰HongKongMetro05",
+        "🇭🇰HongKongMetro06",
+        "🇭🇰HongKongMetro07",
+        "🇭🇰HongKongMetro08",
+        "🇭🇰HongKongMetro09",
+        "🇭🇰HongKongMetro10",
+        "🇭🇰HongKongMetro11",
+        "🇭🇰HongKongMetro12",
+        "🇭🇰HongKongMetro13",
+        "🇭🇰HongKongMetro14",
+        "🇭🇰HongKongMetro15",
+        "🇭🇰HongKongMetro16",
+        "🇭🇰HongKongMetro17",
+        "🇭🇰HongKongMetro18",
+        "🇭🇰HongKongMetro19",
+        "🇭🇰HongKongMetro20",
+        "🇭🇰HongKongMetro21",
+        "🇭🇰HongKongMetro22",
+        "🇭🇰HongKongMedia01",
+        "🇨🇳TaiwanMetro01",
+        "🇨🇳TaiwanMetro02",
+        "🇨🇳TaiwanMetro03",
+        "🇨🇳TaiwanMetro04",
+        "🇨🇳TaiwanMetro05",
+        "🇨🇳TaiwanMetro06",
+        "🇨🇳TaiwanMetro07",
+        "🇨🇳TaiwanMetro08",
+        "🇨🇳TaiwanMetro09",
+        "🇨🇳TaiwanMetro10",
+        "🇸🇬SingaporeMetro01",
+        "🇸🇬SingaporeMetro02",
+        "🇸🇬SingaporeMetro03",
+        "🇸🇬SingaporeMetro04",
+        "🇸🇬SingaporeMetro05",
+        "🇸🇬SingaporeMetro06",
+        "🇸🇬SingaporeMetro07",
+        "🇸🇬SingaporeMetro08",
+        "🇸🇬SingaporeMetro09",
+        "🇸🇬SingaporeMetro10",
+        "🇯🇵Japan01",
+        "🇯🇵Japan02",
+        "🇯🇵Japan03",
+        "🇯🇵Japan04",
+        "🇯🇵Japan05",
+        "🇯🇵JapanMedia01",
+        "🇺🇸UnitedStates01",
+        "🇺🇸UnitedStates02",
+        "🇺🇸UnitedStates03",
+        "🇺🇸UnitedStates04",
+        "🇺🇸UnitedStates05",
+        "🇺🇸UnitedStates06",
+        "🇺🇸UnitedStates07",
+        "🇺🇸UnitedStates08",
+        "🇺🇸UnitedStates09",
+        "🇺🇸UnitedStates10",
+        "🇲🇾Malaysia01",
+        "🇲🇾Malaysia02",
+        "🇲🇾Malaysia03",
+        "🇰🇷SouthKorea01",
+        "🇰🇷SouthKorea02",
+        "🇵🇭Philippines01",
+        "🇻🇳Vietnam01",
+        "🇹🇭Thailand01",
+        "🇮🇩Indonesia01",
+        "🇮🇳India01",
+        "🇹🇷Turkey01",
+        "🇺🇦Ukraine01",
+        "🇷🇺Russia01",
+        "🇮🇹Italy01",
+        "🇫🇷France01",
+        "🇨🇱Chile01",
+        "🇳🇬Nigeria01",
+        "🇧🇷Brazil01",
+        "🇦🇪Dubai01",
+        "🇲🇩Moldova01",
+        "🇩🇪Germany01",
+        "🇦🇺Australia01",
+        "🇪🇸Spain01",
+        "🇨🇦Canada01",
+        "🇸🇪Sweden01",
+        "🇦🇷Argentina01",
+        "🇳🇱Netherlands01",
+        "🇵🇱Poland01",
+        "🇬🇧UnitedKingdom01"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "direct",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇭🇰[H]HK1移动*",
+      "server": "smrt4-hk-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇭🇰[H]HK2家宽",
+      "server": "smrt4-hk-2.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇭🇰[H]HK3移动*",
+      "server": "smrt4-hk-3.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇭🇰[H/0.2x]HK4ALICE",
+      "server": "stable-hk-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇸🇬[H]SG1移动*",
+      "server": "smrt4-sg-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇸🇬[H]SG2联通*",
+      "server": "smrt4-sg-2.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇹🇼[H]TW家宽",
+      "server": "smrt4-tw-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇯🇵[H]JP1联通*",
+      "server": "smrt4-jp-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇯🇵[H]JP2移动*",
+      "server": "smrt4-jp-2.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇯🇵[H]JP3电信*",
+      "server": "smrt4-jp-3.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇺🇸[H/0.3x]USPZ",
+      "server": "stable-usw-2.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇺🇸[H/0.4x]USRS",
+      "server": "stable-usw-3.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇺🇸[H/0.1x]USOVH",
+      "server": "stable-usw-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇺🇸[H/0.1x]USDO*",
+      "server": "smrt4-sb-mg.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇩🇪[H/0.1x]DEDO*",
+      "server": "smrt4-sb-dg.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇨🇦[H/0.2x]CABF",
+      "server": "stable-ca-1.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇨🇦[H/0.1x]CAOVH",
+      "server": "stable-ca-2.twcc.eu.org",
+      "server_port": 18004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "server_name": "i0.hdslb.com",
+        "insecure": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰[中转]HK1",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48001,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰[中转]HK2家宽",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48002,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰[中转]HK3",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48003,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰[中转]HK4",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48004,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇹🇼[中转]TW1家宽",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48011,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇹🇼[中转]TW2",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48012,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬[中转]SG1",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48021,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬[中转]SG2",
+      "server": "nn-1.twcc.eu.org",
+      "server_port": 48022,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵[中转]JP1",
+      "server": "nn-2.twcc.eu.org",
+      "server_port": 48031,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵[中转]JP2",
+      "server": "nn-2.twcc.eu.org",
+      "server_port": 48032,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵[中转]JP3",
+      "server": "nn-2.twcc.eu.org",
+      "server_port": 48033,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇰🇷[中转]KR",
+      "server": "nn-2.twcc.eu.org",
+      "server_port": 48041,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸[中转]US",
+      "server": "nn-2.twcc.eu.org",
+      "server_port": 48051,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪[中转]德国",
+      "server": "nn-3.twcc.eu.org",
+      "server_port": 48107,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇬🇧[中转]英国",
+      "server": "nn-3.twcc.eu.org",
+      "server_port": 48100,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇫🇷[中转]法国",
+      "server": "nn-3.twcc.eu.org",
+      "server_port": 48101,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇹🇭[中转]泰国",
+      "server": "nn-3.twcc.eu.org",
+      "server_port": 48103,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇹🇷[中转]土耳其",
+      "server": "nn-3.twcc.eu.org",
+      "server_port": 48105,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇮🇩[中转]印尼",
+      "server": "nn-3.twcc.eu.org",
+      "server_port": 48106,
+      "password": "a5519af7-5fc1-4fbf-9ec1-a22c6c6a18f0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "d1--cn-gotcha07.bilivideo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "multiplex": {
+        "enabled": true
+      },
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "Traffic:25.04GB|300GB",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22350,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "TrafficReset:28Day",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22350,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "Expire:2025-05-01",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22350,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro01",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22350,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro02",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22351,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro03",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22352,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro04",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22353,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro05",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22355,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro06",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22356,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro07",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22357,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro08",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22358,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro09",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22359,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro10",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22360,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro11",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22392,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro12",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22393,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro13",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22394,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro14",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22395,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro15",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22396,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro16",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22361,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro17",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22363,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro18",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22364,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro19",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22354,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro20",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22401,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro21",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22411,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMetro22",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 22412,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰HongKongMedia01",
+      "server": "061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net",
+      "server_port": 12379,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro01",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12340,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro02",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12341,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro03",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12342,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro04",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12343,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro05",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12344,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro06",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12345,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro07",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12346,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro08",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12347,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro09",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12348,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳TaiwanMetro10",
+      "server": "bad12afa-2ae9-a5bd-4038-f409b618f68a.ss03.net",
+      "server_port": 12349,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro01",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22381,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro02",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22382,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro03",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22383,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro04",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22384,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro05",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22385,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro06",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22377,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro07",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22378,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro08",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22379,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro09",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22386,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬SingaporeMetro10",
+      "server": "03e826b1-4e00-2f2b-aac6-06f12a13b5dd.ss03.net",
+      "server_port": 22369,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵Japan01",
+      "server": "381e05c3-70bf-87f9-b533-8da1de749286.ss03.net",
+      "server_port": 22387,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵Japan02",
+      "server": "381e05c3-70bf-87f9-b533-8da1de749286.ss03.net",
+      "server_port": 22388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵Japan03",
+      "server": "381e05c3-70bf-87f9-b533-8da1de749286.ss03.net",
+      "server_port": 22389,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵Japan04",
+      "server": "381e05c3-70bf-87f9-b533-8da1de749286.ss03.net",
+      "server_port": 22390,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵Japan05",
+      "server": "381e05c3-70bf-87f9-b533-8da1de749286.ss03.net",
+      "server_port": 22391,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵JapanMedia01",
+      "server": "381e05c3-70bf-87f9-b533-8da1de749286.ss03.net",
+      "server_port": 22400,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates01",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22371,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates02",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22366,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates03",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22373,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates04",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22374,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates05",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22375,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates06",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22370,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates07",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22372,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates08",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22397,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates09",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22398,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸UnitedStates10",
+      "server": "3b810d31-ea04-5bc0-b986-ff4cfd42ecd0.ss03.net",
+      "server_port": 22399,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇲🇾Malaysia01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22376,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇲🇾Malaysia02",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12355,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇲🇾Malaysia03",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12350,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇰🇷SouthKorea01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22368,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇰🇷SouthKorea02",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22414,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇵🇭Philippines01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12353,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇻🇳Vietnam01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12382,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇹🇭Thailand01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12383,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇮🇩Indonesia01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22380,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇮🇳India01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12372,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇹🇷Turkey01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12339,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇦Ukraine01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12387,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇷🇺Russia01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12377,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇮🇹Italy01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12378,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇫🇷France01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇱Chile01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22403,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇳🇬Nigeria01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22404,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇧🇷Brazil01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12352,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇦🇪Dubai01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12385,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇲🇩Moldova01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22367,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇩🇪Germany01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12371,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇦🇺Australia01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12373,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇪🇸Spain01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 22408,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇦Canada01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12374,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇪Sweden01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12384,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇦🇷Argentina01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12375,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇳🇱Netherlands01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12386,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇵🇱Poland01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12354,
+      "method": "aes-128-gcm",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇬🇧UnitedKingdom01",
+      "server": "dd99e6d3-3da1-18b7-533f-fbbe92bdd9a8.ss03.net",
+      "server_port": 12376,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eb6dcd58-e34a-4994-964e-2966d4d6ad5f",
+      "domain_resolver": "alidns"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "process_path": [
+          "/usr/bin/qbittorrent"
+        ],
+        "ip_is_private": true,
+        "rule_set": [
+          "geoip-cn",
+          "china-site"
+        ],
+        "action": "route",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "local",
+        "tag": "china-site",
+        "format": "binary",
+        "path": "/home/alice/pros/subx/rule/direct.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/ChinaIPs/ChinaIPs.srs"
+      }
+    ]
+  }
+}

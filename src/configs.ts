@@ -8,12 +8,12 @@ export const sing_box_config: any = {
     strategy: "ipv4_only",
     disable_cache: false,
     cache_capacity: 10000,
-    final: "onedns",
+    final: "googledns",
     servers: [
       {
-        type: "https",
-        tag: "onedns",
-        server: "1.1.1.1",
+        type: "udp",
+        tag: "googledns",
+        server: "8.8.8.8",
         detour: "auto",
       },
       {
@@ -25,7 +25,7 @@ export const sing_box_config: any = {
     ],
     rules: [
       {
-        rule_set: ["geosite-cn"],
+        rule_set: ["china-site"],
         action: "route",
         server: "alidns",
       },
@@ -68,23 +68,23 @@ export const sing_box_config: any = {
       {
         process_path: ["/usr/bin/qbittorrent"],
         ip_is_private: true,
-        rule_set: ["geoip-cn", "geosite-cn"],
+        rule_set: ["geoip-cn", "china-site"],
         action: "route",
         outbound: "direct",
       },
     ],
     rule_set: [
       {
-        type: "remote",
-        tag: "geosite-cn",
+        type: "local",
+        tag: "china-site",
         format: "binary",
-        url: "https://raw.githubusercontent.com/SagerNet/sing-geosite/refs/heads/rule-set/geosite-cn.srs",
+        path: "/home/alice/pros/subx/rule/direct.srs"
       },
       {
         type: "remote",
         tag: "geoip-cn",
         format: "binary",
-        url: "https://raw.githubusercontent.com/SagerNet/sing-geoip/refs/heads/rule-set/geoip-cn.srs",
+        url: "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/ChinaIPs/ChinaIPs.srs",
       },
     ],
   },

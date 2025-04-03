@@ -20,8 +20,8 @@ export function parse_shadowsocks(ss_url: string): shadowsocks {
     server_port: Number(u.port),
     method,
     password,
-    domain_resolver: "alidns"
-  }
+    domain_resolver: "alidns",
+  };
 }
 
 type hysteria = {
@@ -106,6 +106,29 @@ export function parse_trojan(trojan_url: string): trojan {
   };
 
   return trojan_obj;
+}
+
+export function parse_node_urls(node_urls: string[]): [string[], any[]] {
+  const tags: string[] = [];
+  const nodes: any[] = [];
+
+  for (const url of node_urls) {
+    if (url.startsWith("hy")) {
+      const hs_json = parse_hysteria(url);
+      tags.push(hs_json.tag);
+      nodes.push(hs_json);
+    } else if (url.startsWith("trojan")) {
+      const trojan_json = parse_trojan(url);
+      tags.push(trojan_json.tag);
+      nodes.push(trojan_json);
+    } else if (url.startsWith("ss://")) {
+      const ss_json = parse_shadowsocks(url);
+      tags.push(ss_json.tag);
+      nodes.push(ss_json);
+    }
+  }
+
+  return [tags, nodes];
 }
 
 function decode_hash(hash: string): string {

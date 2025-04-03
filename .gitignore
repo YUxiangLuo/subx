@@ -1,7 +1,9 @@
-out
+rule/direct*
 subx
 # dependencies (bun install)
 node_modules
+sqlite.db
+sing-box
 
 # output
 out
