@@ -1,3 +1,29 @@
+// {"type":"shadowsocks","tag":"🇭🇰HongKongMetro10","server":"061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net","server_port":22360,"method":"chacha20-ietf-poly1305","password":"eb6dcd58-e34a-4994-964e-2966d4d6ad5f","domain_resolver":"alidns"}
+
+type shadowsocks = {
+  type: string;
+  tag: string;
+  server: string;
+  server_port: number;
+  method: string;
+  password: string;
+  domain_resolver: string;
+};
+
+export function parse_shadowsocks(ss_url: string): shadowsocks {
+  const u = new URL(ss_url);
+  const [method, password] = atob(u.username).split(":") as [string, string];
+  return {
+    type: "shadowsocks",
+    tag: decode_hash(u.hash),
+    server: u.hostname,
+    server_port: Number(u.port),
+    method,
+    password,
+    domain_resolver: "alidns"
+  }
+}
+
 type hysteria = {
   type: string;
   tag: string;
