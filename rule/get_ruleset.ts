@@ -18,10 +18,10 @@ const rule_set: any = {
             ]
         }
     ],
-    version: 2,
+    version: 3,
 }
 
-Bun.write("./direct-list.txt", text);
+await Bun.write("./direct-list.txt", text);
 const items = text.split("\n");
 for (const item of items) {
     if (item.startsWith("full:")) {
@@ -34,7 +34,8 @@ for (const item of items) {
         if(item) rule_set.rules[0].domain_suffix.push(item);
     }
 }
-console.log(rule_set);
+// console.log(rule_set);
+// console.log(JSON.stringify(rule_set))
 await Bun.write("./direct-list.json", JSON.stringify(rule_set));
 sleep(1000);
-await Bun.$`../sing-box rule-set compile --output direct.srs ./direct-list.json`;
+await Bun.$`../out/sing-box rule-set compile --output direct.srs ./direct-list.json`;

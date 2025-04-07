@@ -1,1 +1,0 @@
-bun build --compile --target=bun-linux-x64 ./src/index.ts --outfile subx

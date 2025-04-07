@@ -78,7 +78,7 @@ export const sing_box_config: any = {
         type: "remote",
         tag: "china-site",
         format: "binary",
-        url: "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/China/China.srs"
+        url: "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/China/China.srs",
       },
       {
         type: "remote",

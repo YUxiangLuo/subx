@@ -1,21 +1,21 @@
 {
   "name": "subx",
   "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "lint": "bun run prettier ./src/*.ts ./*.json -w",
-    "start": "bun run index.ts"
-  },
   "devDependencies": {
     "@types/bun": "^1.2.8",
-    "drizzle-kit": "^0.30.6",
     "prettier": "^3.5.3"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
-  "dependencies": {
-    "drizzle-orm": "^0.41.0"
-  }
+  "private": true,
+  "scripts": {
+    "lint": "bun run prettier ./src/*.ts -w",
+    "add": "bun run src/index.ts add",
+    "update": "bun run src/index.ts update",
+    "delete": "bun run src/index.ts delete",
+    "generate": "bun run src/index.ts generate", 
+    "go": "sudo ./out/sing-box run -c out/config.json"
+  },
+  "type": "module"
 }
