@@ -5,6 +5,7 @@ export const sing_box_config: any = {
     timestamp: true,
   },
   dns: {
+    client_subnet: "114.114.114.0/24",
     strategy: "ipv4_only",
     disable_cache: false,
     cache_capacity: 10000,
@@ -39,7 +40,6 @@ export const sing_box_config: any = {
       address: ["172.18.0.1/30"],
       mtu: 9000,
       auto_route: true,
-      auto_redirect: true,
       strict_route: true,
     },
   ],
@@ -66,8 +66,13 @@ export const sing_box_config: any = {
         action: "hijack-dns",
       },
       {
-        process_path: ["/usr/bin/qbittorrent"],
+        domain: ["localhost"],
+        process_path: ["/usr/bin/qbittorrent", "/usr/bin/NetworkManager"],
         ip_is_private: true,
+        action: "route",
+        outbound: "direct"
+      },
+      {
         rule_set: ["china-ip", "china-site"],
         action: "route",
         outbound: "direct",
