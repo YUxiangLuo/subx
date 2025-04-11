@@ -15,10 +15,10 @@ switch (op) {
     delete_sub();
     break;
   case "generate":
-    generate_config(process.argv[3]);
+    generate_config(process.argv[3], process.argv[4]);
     break;
   default:
-    generate_config();
+    generate_config(process.argv[3], process.argv[4]);
     break;
 }
 type sub = {
@@ -54,15 +54,19 @@ async function update_subs() {
   }
 }
 
-async function generate_config(out_path: string = "out/config.json") {
+async function generate_config(keyword: string = "", out_path: string = "out/config.json") {
   const subs = (await db.query(`select * from subs`).all()) as sub[];
   if (subs.length === 0) process.exit(1);
-  console.log(subs);
 
   for (const sub of subs) {
     const nodes_json: any[] = JSON.parse(sub.nodes);
-    sing_box_config.outbounds[0].outbounds = nodes_json.map((x) => x.tag);
+    sing_box_config.outbounds[0].outbounds =  [...sing_box_config.outbounds[0].outbounds, ...nodes_json.map((x) => x.tag)];
     sing_box_config.outbounds = [...sing_box_config.outbounds, ...nodes_json];
+  }
+
+  if(keyword) {
+    sing_box_config.outbounds[0].outbounds = sing_box_config.outbounds[0].outbounds.filter((x: string) => (x.includes(keyword)));
+    sing_box_config.outbounds = sing_box_config.outbounds.filter((x: any) => (x.type==="urltest"||x.type==="direct"||x.tag.includes(keyword)));
   }
   Bun.write(out_path, JSON.stringify(sing_box_config));
 }
