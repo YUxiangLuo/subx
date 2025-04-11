@@ -3,6 +3,7 @@ export const sing_box_config: any = {
     disabled: false,
     level: "info",
     timestamp: true,
+    output: "box.log"
   },
   dns: {
     client_subnet: "114.114.114.0/24",
