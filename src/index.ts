@@ -63,11 +63,14 @@ async function generate_config(keyword: string = "", out_path: string = "out/con
     sing_box_config.outbounds[0].outbounds =  [...sing_box_config.outbounds[0].outbounds, ...nodes_json.map((x) => x.tag)];
     sing_box_config.outbounds = [...sing_box_config.outbounds, ...nodes_json];
   }
+  console.log(sing_box_config);
+  
 
   if(keyword) {
     sing_box_config.outbounds[0].outbounds = sing_box_config.outbounds[0].outbounds.filter((x: string) => (x.includes(keyword)));
-    sing_box_config.outbounds = sing_box_config.outbounds.filter((x: any) => (x.type==="urltest"||x.type==="direct"||x.tag.includes(keyword)));
+    sing_box_config.outbounds = sing_box_config.outbounds.filter((x: any) => (x.type==="selector"||x.type==="direct"||x.tag.includes(keyword)));
   }
+  sing_box_config.outbounds[0].default = sing_box_config.outbounds[0].outbounds[0];
   Bun.write(out_path, JSON.stringify(sing_box_config));
 }
 

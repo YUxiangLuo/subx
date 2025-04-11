@@ -15,7 +15,7 @@ export const sing_box_config: any = {
         type: "udp",
         tag: "googledns",
         server: "8.8.8.8",
-        detour: "auto",
+        detour: "select",
       },
       {
         type: "udp",
@@ -45,9 +45,10 @@ export const sing_box_config: any = {
   ],
   outbounds: [
     {
-      type: "urltest",
-      tag: "auto",
+      type: "selector",
+      tag: "select",
       outbounds: [],
+      "interrupt_exist_connections": false
     },
     {
       type: "direct",
@@ -55,6 +56,12 @@ export const sing_box_config: any = {
       domain_resolver: "alidns",
     },
   ],
+  experimental: {
+    clash_api: {
+      external_controller: "0.0.0.0:9090",
+      external_ui: "dashboard"
+    }
+  },
   route: {
     auto_detect_interface: true,
     rules: [
@@ -67,7 +74,7 @@ export const sing_box_config: any = {
       },
       {
         domain: ["localhost"],
-        process_path: ["/usr/bin/qbittorrent", "/usr/bin/NetworkManager"],
+        process_path: ["/usr/bin/qbittorrent", "/usr/bin/NetworkManager", "/usr/lib/systemd/systemd-resolved"],
         ip_is_private: true,
         action: "route",
         outbound: "direct"

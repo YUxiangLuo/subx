@@ -1,3 +1,4 @@
+dashboard/
 rule/direct*
 subx
 # dependencies (bun install)
