@@ -75,11 +75,25 @@ export const sing_box_config: any = {
         action: "hijack-dns",
       },
       {
-        domain: ["localhost"],
-        process_path: ["/usr/bin/qbittorrent", "/usr/bin/NetworkManager", "/usr/lib/systemd/systemd-resolved"],
-        ip_is_private: true,
-        action: "route",
-        outbound: "direct"
+        "domain": [
+          "localhost"
+        ],
+        "action": "route",
+        "outbound": "direct"
+      },
+      {
+        "process_path": [
+          "/usr/bin/qbittorrent",
+          "/usr/bin/NetworkManager",
+          "/usr/lib/systemd/systemd-resolved"
+        ],
+        "action": "route",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "action": "route",
+        "outbound": "direct"
       },
       {
         rule_set: ["china-ip", "china-site"],
