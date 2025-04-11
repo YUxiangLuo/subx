@@ -63,7 +63,6 @@ async function generate_config(keyword: string = "", out_path: string = "out/con
     sing_box_config.outbounds[0].outbounds =  [...sing_box_config.outbounds[0].outbounds, ...nodes_json.map((x) => x.tag)];
     sing_box_config.outbounds = [...sing_box_config.outbounds, ...nodes_json];
   }
-  console.log(sing_box_config);
   
 
   if(keyword) {

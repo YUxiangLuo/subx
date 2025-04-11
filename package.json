@@ -14,8 +14,7 @@
     "add": "bun run src/index.ts add",
     "update": "bun run src/index.ts update",
     "delete": "bun run src/index.ts delete",
-    "generate": "bun run src/index.ts generate", 
-    "go": "sudo ./out/sing-box run -c out/config.json"
+    "generate": "bun run src/index.ts generate" 
   },
   "type": "module"
 }
