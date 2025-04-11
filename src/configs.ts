@@ -42,6 +42,7 @@ export const sing_box_config: any = {
       mtu: 9000,
       auto_route: true,
       strict_route: true,
+      auto_redirect: true
     },
   ],
   outbounds: [
