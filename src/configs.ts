@@ -50,7 +50,7 @@ export const sing_box_config: any = {
       type: "selector",
       tag: "select",
       outbounds: [],
-      "interrupt_exist_connections": false
+      "interrupt_exist_connections": true
     },
     {
       type: "direct",
@@ -75,25 +75,25 @@ export const sing_box_config: any = {
         action: "hijack-dns",
       },
       {
-        "domain": [
+        domain: [
           "localhost"
         ],
-        "action": "route",
-        "outbound": "direct"
+        action: "route",
+        outbound: "direct"
       },
       {
-        "process_path": [
+        process_path: [
           "/usr/bin/qbittorrent",
           "/usr/bin/NetworkManager",
           "/usr/lib/systemd/systemd-resolved"
         ],
-        "action": "route",
-        "outbound": "direct"
+        action: "route",
+        outbound: "direct"
       },
       {
-        "ip_is_private": true,
-        "action": "route",
-        "outbound": "direct"
+        ip_is_private: true,
+        action: "route",
+        outbound: "direct"
       },
       {
         rule_set: ["china-ip", "china-site"],

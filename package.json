@@ -14,7 +14,8 @@
     "add": "bun run src/index.ts add",
     "update": "bun run src/index.ts update",
     "delete": "bun run src/index.ts delete",
-    "generate": "bun run src/index.ts generate" 
+    "generate": "bun run src/index.ts generate",
+    "rule": "bun run rule/get_ruleset.ts"
   },
   "type": "module"
 }

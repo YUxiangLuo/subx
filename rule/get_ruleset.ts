@@ -14,28 +14,28 @@ const rule_set: any = {
                 ".cn"
             ],
             "domain_regex": [
-                
+
             ]
         }
     ],
     version: 3,
 }
 
-await Bun.write("./direct-list.txt", text);
+await Bun.write(import.meta.dir + "/direct-list.txt", text);
 const items = text.split("\n");
 for (const item of items) {
     if (item.startsWith("full:")) {
         rule_set.rules[0].domain.push(item.replace("full:", ""));
-    } 
+    }
     else if (item.startsWith("regexp:")) {
-        rule_set.rules[0].domain_regex.push(item.replace("regexp:", ""))
-    } 
+        // rule_set.rules[0].domain_regex.push(item.replace("regexp:", ""))
+    }
     else {
-        if(item) rule_set.rules[0].domain_suffix.push(item);
+        if (item) rule_set.rules[0].domain_suffix.push(item);
     }
 }
 // console.log(rule_set);
 // console.log(JSON.stringify(rule_set))
-await Bun.write("./direct-list.json", JSON.stringify(rule_set));
+await Bun.write(import.meta.dir + "/direct-list.json", JSON.stringify(rule_set));
 sleep(1000);
-await Bun.$`../out/sing-box rule-set compile --output direct.srs ./direct-list.json`;
+await Bun.$`/home/alice/pros/subx/out/sing-box rule-set compile --output /home/alice/pros/subx/rule/direct.srs /home/alice/pros/subx/rule/direct-list.json`;
