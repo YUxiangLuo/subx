@@ -15,10 +15,10 @@ switch (op) {
     delete_sub();
     break;
   case "generate":
-    generate_config(process.argv[3], process.argv[4]);
+    generate_config(process.argv[3]);
     break;
   default:
-    generate_config(process.argv[3], process.argv[4]);
+    generate_config(process.argv[3]);
     break;
 }
 type sub = {
@@ -30,7 +30,7 @@ type sub = {
 async function delete_sub() {
   const subs = (await db.query(`select * from subs`).all()) as sub[];
   if (subs.length === 0) process.exit();
-  console.log(subs.map((x) => ({id: x.id, url: x.url})));
+  console.log(subs.map((x) => ({ id: x.id, url: x.url })));
   process.stdout.write("Enter your sub id: \n->");
   const sub_id = await read_line();
   await db.query(
@@ -54,22 +54,19 @@ async function update_subs() {
   }
 }
 
-async function generate_config(keyword: string = "", out_path: string = "out/config.json") {
+async function generate_config(out_path: string = "out/config.json") {
   const subs = (await db.query(`select * from subs`).all()) as sub[];
   if (subs.length === 0) process.exit(1);
 
+  let nodes_json: any[] = [];
   for (const sub of subs) {
-    const nodes_json: any[] = JSON.parse(sub.nodes);
-    sing_box_config.outbounds[0].outbounds =  [...sing_box_config.outbounds[0].outbounds, ...nodes_json.map((x) => x.tag)];
+    nodes_json = JSON.parse(sub.nodes);
+    sing_box_config.outbounds[0].outbounds = [...sing_box_config.outbounds[0].outbounds, ...nodes_json.map((x) => x.tag)];
     sing_box_config.outbounds = [...sing_box_config.outbounds, ...nodes_json];
   }
-  
 
-  if(keyword) {
-    sing_box_config.outbounds[0].outbounds = sing_box_config.outbounds[0].outbounds.filter((x: string) => (x.includes(keyword)));
-    sing_box_config.outbounds = sing_box_config.outbounds.filter((x: any) => (x.type==="selector"||x.type==="direct"||x.tag.includes(keyword)));
-  }
-  sing_box_config.outbounds[0].default = sing_box_config.outbounds[0].outbounds[0];
+
+
   Bun.write(out_path, JSON.stringify(sing_box_config));
 }
 

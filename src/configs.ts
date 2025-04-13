@@ -6,7 +6,6 @@ export const sing_box_config: any = {
     output: "box.log"
   },
   dns: {
-    client_subnet: "114.114.114.0/24",
     strategy: "ipv4_only",
     disable_cache: false,
     cache_capacity: 10000,
@@ -15,7 +14,7 @@ export const sing_box_config: any = {
       {
         type: "udp",
         tag: "googledns",
-        server: "8.8.8.8",
+        server: "1.1.1.1",
         detour: "select",
       },
       {
@@ -103,10 +102,10 @@ export const sing_box_config: any = {
     ],
     rule_set: [
       {
-        type: "remote",
+        type: "local",
         tag: "china-site",
         format: "binary",
-        url: "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/China/China.srs",
+        path: "./rule/direct.srs"
       },
       {
         type: "remote",
