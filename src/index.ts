@@ -15,10 +15,10 @@ switch (op) {
     delete_sub();
     break;
   case "generate":
-    generate_config(process.argv[3]);
+    generate_config(process.argv[3], process.argv[4]);
     break;
   default:
-    generate_config(process.argv[3]);
+    generate_config(process.argv[3], process.argv[4]);
     break;
 }
 type sub = {
@@ -28,45 +28,54 @@ type sub = {
 };
 
 async function delete_sub() {
-  const subs = (await db.query(`select * from subs`).all()) as sub[];
+  const subs = db.query(`select * from subs`).all() as sub[];
   if (subs.length === 0) process.exit();
   console.log(subs.map((x) => ({ id: x.id, url: x.url })));
   process.stdout.write("Enter your sub id: \n->");
   const sub_id = await read_line();
-  await db.query(
-    `delete from subs where id = ${sub_id};`).run();
+  db.query(`delete from subs where id = ${sub_id};`).run();
   console.log("deleted sub with id: ", sub_id);
   process.exit();
 }
 
 async function update_subs() {
-  const subs = (await db.query(`select * from subs`).all()) as sub[];
+  const subs = db.query(`select * from subs`).all() as sub[];
   if (subs.length === 0) process.exit();
   for (const sub of subs) {
     const sub_link = sub.url;
     const node_urls = await fetch_node_urls(sub_link);
-    const [_, nodes] = await parse_node_urls(node_urls);
-    db
-      .query(
-        `update subs set nodes = '${JSON.stringify(nodes)}', update_time = '${Date()}'  where id = ${sub.id};`,
-      )
-      .run();
+    const [_, nodes] = parse_node_urls(node_urls);
+    db.query(
+      `update subs set nodes = '${JSON.stringify(nodes)}', update_time = '${Date()}'  where id = ${sub.id};`,
+    ).run();
   }
 }
 
-async function generate_config(out_path: string = "out/config.json") {
-  const subs = (await db.query(`select * from subs`).all()) as sub[];
+async function generate_config(
+  keyword: string = "Taiwan",
+  out_path: string = "out/config.json",
+) {
+  const subs = db.query(`select * from subs`).all() as sub[];
   if (subs.length === 0) process.exit(1);
 
   let nodes_json: any[] = [];
   for (const sub of subs) {
     nodes_json = JSON.parse(sub.nodes);
-    sing_box_config.outbounds[0].outbounds = [...sing_box_config.outbounds[0].outbounds, ...nodes_json.map((x) => x.tag)];
+    sing_box_config.outbounds[0].outbounds = [
+      ...sing_box_config.outbounds[0].outbounds,
+      ...nodes_json.map((x) => x.tag),
+    ];
     sing_box_config.outbounds = [...sing_box_config.outbounds, ...nodes_json];
   }
 
-
-
+  // Taiwan
+  sing_box_config.outbounds[0].outbounds =
+    sing_box_config.outbounds[0].outbounds.filter((x: string) =>
+      x.includes(keyword),
+    );
+  sing_box_config.outbounds = sing_box_config.outbounds.filter((x: any) => {
+    return x.tag === "direct" || x.tag === "select" || x.tag.includes(keyword);
+  });
   Bun.write(out_path, JSON.stringify(sing_box_config));
 }
 
@@ -84,12 +93,10 @@ async function add_sub() {
   }
 
   const node_urls = await fetch_node_urls(sub_link);
-  const [tags, nodes] = await parse_node_urls(node_urls);
+  const [tags, nodes] = parse_node_urls(node_urls);
   console.log(tags);
 
-  db
-    .query(
-      `insert into subs(url, nodes, update_time) values('${sub_link}', '${JSON.stringify(nodes)}', '${Date()}')`,
-    )
-    .run();
+  db.query(
+    `insert into subs(url, nodes, update_time) values('${sub_link}', '${JSON.stringify(nodes)}', '${Date()}')`,
+  ).run();
 }

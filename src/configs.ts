@@ -3,18 +3,17 @@ export const sing_box_config: any = {
     disabled: false,
     level: "info",
     timestamp: true,
-    output: "box.log"
   },
   dns: {
     strategy: "ipv4_only",
     disable_cache: false,
-    cache_capacity: 10000,
-    final: "googledns",
+    cache_capacity: 50000,
+    final: "taiwandns",
     servers: [
       {
         type: "udp",
-        tag: "googledns",
-        server: "1.1.1.1",
+        tag: "taiwandns",
+        server: "8.8.8.8",
         detour: "select",
       },
       {
@@ -41,7 +40,7 @@ export const sing_box_config: any = {
       mtu: 9000,
       auto_route: true,
       strict_route: true,
-      auto_redirect: true
+      auto_redirect: true,
     },
   ],
   outbounds: [
@@ -49,7 +48,7 @@ export const sing_box_config: any = {
       type: "selector",
       tag: "select",
       outbounds: [],
-      "interrupt_exist_connections": true
+      interrupt_exist_connections: true,
     },
     {
       type: "direct",
@@ -60,8 +59,8 @@ export const sing_box_config: any = {
   experimental: {
     clash_api: {
       external_controller: "0.0.0.0:9090",
-      external_ui: "dashboard"
-    }
+      external_ui: "dashboard",
+    },
   },
   route: {
     auto_detect_interface: true,
@@ -74,25 +73,23 @@ export const sing_box_config: any = {
         action: "hijack-dns",
       },
       {
-        domain: [
-          "localhost"
-        ],
-        action: "route",
-        outbound: "direct"
+        rule_set: ["ads-site"],
+        action: "reject",
       },
       {
-        process_path: [
-          "/usr/bin/qbittorrent",
-          "/usr/bin/NetworkManager",
-          "/usr/lib/systemd/systemd-resolved"
-        ],
+        domain: ["localhost"],
         action: "route",
-        outbound: "direct"
+        outbound: "direct",
+      },
+      {
+        process_path: ["/usr/bin/qbittorrent"],
+        action: "route",
+        outbound: "direct",
       },
       {
         ip_is_private: true,
         action: "route",
-        outbound: "direct"
+        outbound: "direct",
       },
       {
         rule_set: ["china-ip", "china-site"],
@@ -105,7 +102,13 @@ export const sing_box_config: any = {
         type: "local",
         tag: "china-site",
         format: "binary",
-        path: "./rule/direct.srs"
+        path: "./rule/direct.srs",
+      },
+      {
+        type: "local",
+        tag: "ads-site",
+        format: "binary",
+        path: "./rule/reject.srs",
       },
       {
         type: "remote",
