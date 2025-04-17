@@ -1,5 +1,4 @@
 export const sing_box_config: any = {
-
   "log": { "disabled": false, "level": "info", "timestamp": true },
   "dns": {
     "final": "onedns",
@@ -13,10 +12,9 @@ export const sing_box_config: any = {
       },
       { "type": "fakeip", "tag": "fakeip", "inet4_range": "198.18.0.0/15" },
       {
-        "tag": "alidns",
+        "tag": "local",
         "type": "udp",
-        "server": "223.5.5.5",
-        "detour": "direct"
+        "server": "223.5.5.5"
       }
     ],
     "rules": [
@@ -33,7 +31,7 @@ export const sing_box_config: any = {
       {
         "rule_set": ["china-site"],
         "action": "route",
-        "server": "alidns"
+        "server": "local"
       }
     ]
   },
@@ -57,7 +55,7 @@ export const sing_box_config: any = {
       ],
       "interrupt_exist_connections": true
     },
-    { "type": "direct", "tag": "direct", "domain_resolver": "alidns" },
+    { "type": "direct", "tag": "direct" },
   ],
   "experimental": {
     "clash_api": {
@@ -75,15 +73,18 @@ export const sing_box_config: any = {
     "rules": [
       { "action": "sniff" },
       { "protocol": "dns", "action": "hijack-dns" },
-      { "rule_set": ["ads-site"], "action": "reject" },
       {
         "process_path": ["/usr/bin/qbittorrent"],
         "action": "route",
         "outbound": "direct"
       },
+      {
+        "process_path": ["/usr/lib/systemd/systemd-resolved"],
+        "action": "reject"
+      },
       { "ip_is_private": true, "action": "route", "outbound": "direct" },
       {
-        "rule_set": ["china-ip", "china-site"],
+        "rule_set": ["china-ip"],
         "action": "route",
         "outbound": "direct"
       }
@@ -97,23 +98,10 @@ export const sing_box_config: any = {
       },
       {
         "type": "local",
-        "tag": "ads-site",
-        "format": "binary",
-        "path": "./rule/reject.srs"
-      },
-      {
-        "type": "local",
-        "tag": "proxy-site",
-        "format": "binary",
-        "path": "./rule/proxy.srs"
-      },
-      {
-        "type": "remote",
         "tag": "china-ip",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/ChinaIPs/ChinaIPs.srs"
+        "path": "./rule/china-ip.srs"
       }
     ]
   }
-
 };

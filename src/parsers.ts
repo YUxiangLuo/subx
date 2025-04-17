@@ -1,5 +1,3 @@
-// {"type":"shadowsocks","tag":"🇭🇰HongKongMetro10","server":"061a43b9-2e7f-93ab-5ed1-8e9e582bd574.ss03.net","server_port":22360,"method":"chacha20-ietf-poly1305","password":"eb6dcd58-e34a-4994-964e-2966d4d6ad5f","domain_resolver":"alidns"}
-
 type shadowsocks = {
   type: string;
   tag: string;
@@ -20,7 +18,7 @@ export function parse_shadowsocks(ss_url: string): shadowsocks {
     server_port: Number(u.port),
     method,
     password,
-    domain_resolver: "alidns",
+    domain_resolver: "local",
   };
 }
 
@@ -52,7 +50,7 @@ export function parse_hysteria(url: string): hysteria {
       server_name: u.searchParams.get("sni") || "",
       insecure: true,
     },
-    domain_resolver: "alidns",
+    domain_resolver: "local",
   };
 }
 
@@ -102,7 +100,7 @@ export function parse_trojan(trojan_url: string): trojan {
     multiplex: {
       enabled: true,
     },
-    domain_resolver: "alidns",
+    domain_resolver: "local",
   };
 
   return trojan_obj;
