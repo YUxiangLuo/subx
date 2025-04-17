@@ -6,13 +6,12 @@ export const sing_box_config: any = {
   },
   dns: {
     strategy: "ipv4_only",
-    disable_cache: false,
-    cache_capacity: 50000,
-    final: "taiwandns",
+    disable_cache: true,
+    final: "googledns",
     servers: [
       {
         type: "udp",
-        tag: "taiwandns",
+        tag: "googledns",
         server: "8.8.8.8",
         detour: "select",
       },
@@ -75,11 +74,6 @@ export const sing_box_config: any = {
       {
         rule_set: ["ads-site"],
         action: "reject",
-      },
-      {
-        domain: ["localhost"],
-        action: "route",
-        outbound: "direct",
       },
       {
         process_path: ["/usr/bin/qbittorrent"],

@@ -21,7 +21,7 @@ async function generate_reject_list() {
     version: 3,
   };
 
-  await Bun.write(import.meta.dir + "/reject-list.txt", text);
+  await Bun.write(import.meta.dir + "/rule/reject-list.txt", text);
   const items = text.split("\n");
   for (const item of items) {
     if (item.startsWith("full:")) {
@@ -33,11 +33,11 @@ async function generate_reject_list() {
     }
   }
   await Bun.write(
-    import.meta.dir + "/reject-list.json",
+    import.meta.dir + "/rule/reject-list.json",
     JSON.stringify(rule_set),
   );
   sleep(1000);
-  await Bun.$`/home/alice/pros/subx/out/sing-box rule-set compile --output /home/alice/pros/subx/rule/reject.srs /home/alice/pros/subx/rule/reject-list.json`;
+  await Bun.$`${import.meta.dir}/out/sing-box rule-set compile --output ${import.meta.dir}/rule/reject.srs ${import.meta.dir}/rule/reject-list.json`;
 }
 
 async function generate_direct_list() {
@@ -58,7 +58,7 @@ async function generate_direct_list() {
     version: 3,
   };
 
-  await Bun.write(import.meta.dir + "/direct-list.txt", text);
+  await Bun.write(import.meta.dir + "/rule/direct-list.txt", text);
   const items = text.split("\n");
   for (const item of items) {
     if (item.startsWith("full:")) {
@@ -70,9 +70,9 @@ async function generate_direct_list() {
     }
   }
   await Bun.write(
-    import.meta.dir + "/direct-list.json",
+    import.meta.dir + "/rule/direct-list.json",
     JSON.stringify(rule_set),
   );
   sleep(1000);
-  await Bun.$`/home/alice/pros/subx/out/sing-box rule-set compile --output /home/alice/pros/subx/rule/direct.srs /home/alice/pros/subx/rule/direct-list.json`;
+  await Bun.$`${import.meta.dir}/out/sing-box rule-set compile --output ${import.meta.dir}/rule/direct.srs ${import.meta.dir}/rule/direct-list.json`;
 }
